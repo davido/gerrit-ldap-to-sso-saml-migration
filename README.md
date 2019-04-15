@@ -1,4 +1,4 @@
-# Gerrit LDAP to SSO SAML authentication scheme migration
+	# Gerrit LDAP to SSO SAML authentication scheme migration
 
 [Gerrit](https://www.gerritcodereview.com) is a code review and project
 management tool for Git based projects.
@@ -40,5 +40,22 @@ this [configuration file](resources/gerrit/gerrit_saml.config).
 12. Start Gerrit.
 13. Login to [Gerrit](localhost:8081) using this credentials: user=gerritadmin, pwd=secret.
 14. Note, that the user is now authenticated against the Keycloakand not against the LDAP.
-15. Congrats, you have sucessfully migrated authentication scheme in Gerrit from LDAP to SSO SAML.
+15. Congrats, you have successfully migrated authentication scheme in Gerrit from LDAP to SSO SAML.
 
+## Known issues
+
+### Group resolution was not tested yet.
+
+### Git over HTTP set up was not tested yet.
+
+### Discrepancy between user names in LDAP vs. IdP.
+
+When user names are misaligned, user name must be correlated between IdP and LDAP.
+There are three different approaches to resolve the misalignment:
+
+1. Request the LDAP user name attribute from the IdP and use it as a real username.
+2. When 1. is not possible, request PersonId attribute from the IdP, and use it
+instead of the user name. This requires mapping for all user names from old user
+names to new user names.
+3. Extend saml plugin and allow to configure saml.userNameLdapQuery to query the
+actual user name attribute during login time in saml plugin. 

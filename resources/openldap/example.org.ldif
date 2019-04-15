@@ -1,0 +1,31 @@
+dn: dc=example,dc=org
+objectClass: top
+objectClass: dcObject
+objectClass: organization
+o: Example Inc.
+dc: example
+
+dn: cn=admin,dc=example,dc=org
+objectClass: simpleSecurityObject
+objectClass: organizationalRole
+cn: admin
+description: LDAP administrator
+userPassword:: e1NTSEF9TTVOdGtXbTNIQUtWUWFsUkpHczhYMGFEK3oxMW8reXM=
+
+dn: cn=gerritadmin,dc=example,dc=org
+givenName: Gerrit
+sn: Admin
+uid: gerritadmin
+mail: gerritadmin@example.org
+userPassword:: e01ENX1YcjRpbE96UTRQQ09xM2FRMHFidWFRPT0=
+objectClass: inetOrgPerson
+objectClass: top
+cn: gerritadmin
+displayName: Gerrit Admin
+
+dn: ou=groups,dc=example,dc=org
+objectClass: organizationalUnit
+objectClass: top
+ou: groups
+description: generic groups branch
+
